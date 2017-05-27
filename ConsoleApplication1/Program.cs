@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -137,34 +138,55 @@ namespace ConsoleApplication1
              }*/
             #endregion
 
-            PhoneBook p = new PhoneBook();
-            Console.WriteLine("欢迎使用简易电话本系统");
-            Console.WriteLine("操作方式:a--添加联系人,s--查看联系人,q--退出系统");
-            while (true) { 
-            string flag = Console.ReadLine();
-            switch (flag)
+
+
+            #region 电话本
+            ArrayList telArray = new ArrayList();
+            while (true)
             {
-                case "a":
-                    for (int i = 0; i < 3; i++)
+                Console.Clear();
+                Console.Write("欢迎使用电话本");
+                Console.WriteLine("a.添加,s.查看,q.退出");
+                string select = Console.ReadLine();
+                if (select == "a")
+                {
+                    Console.WriteLine("请输入姓名:");
+                    string name = Console.ReadLine();
+                    Console.WriteLine("请输入电话:");
+                    string phone = Console.ReadLine();
+                    telArray.Add(new PhoneBook() { Name = name, Phone = phone });
+
+                }
+                else if (select == "s")
+                {
+                    Console.Clear();
+                    Console.WriteLine("电话号码本:");
+                    Console.WriteLine("姓名   电话");
+                    foreach (var item in telArray)
                     {
-                        Console.Write("请输入姓名:");
-                        string name = Console.ReadLine();
-                        Console.Write("请输入电话:");
-                        string phone = Console.ReadLine();
-                        p.Insert(name, phone);
-                      
+                        Console.WriteLine("{0}{1}", ((PhoneBook)item).Name, ((PhoneBook)item).Phone);
                     }
-                    break;
-                case "s":
-                    p.Show();
-                    continue;
-                    case "q":
+                    Console.Read();
+                }
+                else if (select == "q")
+                {
+                    Console.Clear();
+                    Console.WriteLine("已退出");
                     return;
+
+                }
+
+
+
             }
+            #endregion
+
+        }
             }
+
 
 
         }
-    }
-}
+    
+
 

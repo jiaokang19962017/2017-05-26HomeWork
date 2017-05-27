@@ -9,26 +9,33 @@ namespace ConsoleApplication1
 {
     class PhoneBook
     {
-        ArrayList list = new ArrayList();//声明变量
 
-        /// <summary>
-        /// 添加联系人的方法
-        /// </summary>
-        /// <param name="name">姓名</param>
-        /// <param name="phone">电话号</param>
-        public void Insert(string name,string phone)
+        string name;
+        string phone;
+
+        public string Name
         {
-           
-                list.Add(name);
-                list.Add(phone);
-            
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
         }
 
-        public void Show()
+        public string Phone
         {
-            foreach (var item in list)
+            get
             {
-                Console.Write(item.ToString()+"姓名:");
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
             }
         }
     }
